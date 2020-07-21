@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Docker2-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Docker2
+  template:
+    metadata:
+      labels:
+        app: Docker2
+    spec:
+      containers:
+      - name: docker2
+        image: democontainer2.azurecr.io/democontainer2:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: dockercontainer2
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker2
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: Docker2
