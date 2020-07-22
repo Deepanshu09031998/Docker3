@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: docker2
-        image: democontainer2.azurecr.io/democontainer2:latest
+        image:  demo9.azurecr.io/demo9:latest
         ports:
         - containerPort: 8080
       imagePullSecrets:
